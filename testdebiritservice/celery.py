@@ -5,7 +5,7 @@ celery_app = Celery(
     broker="redis://redis:6379/0",
 )
 
-from testdebiritservice.tasks.fetch_prices import *
+from testdebiritservice.tasks.fetch_prices import *  # noqa: E402, F403
 
 celery_app.conf.beat_schedule = {
     "fetch-prices-every-minute": {

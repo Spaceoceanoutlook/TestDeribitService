@@ -2,7 +2,7 @@ import asyncio
 import time
 
 from testdebiritservice.celery import celery_app
-from testdebiritservice.services.deribit_client import DeribitClient
+from testdebiritservice.services.debirit_client import DebiritClient
 from testdebiritservice.database import SessionLocal
 from testdebiritservice.models.price import Price
 from settings import settings
@@ -17,7 +17,7 @@ def fetch_prices():
 
 
 async def _fetch_prices_async():
-    client = DeribitClient()
+    client = DebiritClient()
     db = SessionLocal()
 
     try:

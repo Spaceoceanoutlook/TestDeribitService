@@ -2,7 +2,7 @@ import aiohttp
 from settings import settings
 
 
-class DeribitClient:
+class DebiritClient:
     async def get_index_price(self, ticker: str) -> float:
         url = f"{settings.deribit_base_url}/public/get_index_price"
         params = {"index_name": ticker}
