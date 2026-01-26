@@ -1,5 +1,6 @@
 from pydantic import ConfigDict
 from pydantic_settings import BaseSettings
+from typing import List
 
 
 class Settings(BaseSettings):
@@ -10,6 +11,7 @@ class Settings(BaseSettings):
     postgres_port: int
 
     deribit_base_url: str
+    tickers: List[str]
 
     @property
     def sqlalchemy_url(self) -> str:

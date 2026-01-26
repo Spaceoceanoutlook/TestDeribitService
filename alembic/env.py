@@ -7,11 +7,13 @@ from alembic import context
 from testdebiritservice.models import Base
 from settings import settings
 
+
 def get_url():
     url = settings.sqlalchemy_url
     if not url:
         raise ValueError("URL not found")
     return url
+
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -70,13 +72,11 @@ def run_migrations_online() -> None:
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
-        url=url
+        url=url,
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()
